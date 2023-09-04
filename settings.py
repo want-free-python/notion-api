@@ -9,7 +9,7 @@ def create_table() -> None:
         CREATE TABLE page(\
         id int NOT NULL AUTO_INCREMENT PRIMARY KEY,\
         title varchar(256) NOT NULL,\
-        content varchar(256) NOT NULL,\
+        content text NOT NULL,\
         parent_id int,\
         FOREIGN KEY (parent_id) REFERENCES page(id)\
         );"

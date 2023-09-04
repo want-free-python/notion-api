@@ -43,12 +43,3 @@ child_page2.save()
 all_pages.extend([parent_page, child_page1, child_page2])
 
 # print(all_pages)
-
-
-# # 페이지 데이터 생성
-# pages = [
-#     Page(1, "페이지 1", "이것은 페이지 1의 내용입니다."),
-#     Page(2, "페이지 2", "이것은 페이지 2의 내용입니다."),
-#     Page(3, "페이지 3", "이것은 페이지 3의 내용입니다.", parent_id=1),  # 페이지 1의 하위 페이지
-#     Page(4, "페이지 4", "이것은 페이지 4의 내용입니다.", parent_id=2),  # 페이지 2의 하위 페이지
-# ]

@@ -35,10 +35,10 @@ all_pages = []
 parent_page = Page(1, "Parent Page", "This is the parent page content")
 parent_page.save()
 
-child_page1 = Page(2, "Child Page 1", "This is child page 1 content", parent_id=parent_page.id)
+child_page1 = Page("Child Page 1", "This is child page 1 content", parent_id=parent_page.id)
 child_page1.save()
 
-child_page2 = Page(3, "Child Page 2", "This is child page 2 content", parent_id=parent_page.id)
+child_page2 = Page("Child Page 2", "This is child page 2 content", parent_id=parent_page.id)
 child_page2.save()
 
 all_pages.extend([parent_page, child_page1, child_page2])

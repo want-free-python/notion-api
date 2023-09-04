@@ -49,8 +49,29 @@ print(json.dumps(all_page_info, indent=2, ensure_ascii=False))  # indent를 사�
 
 
 
-
-
 # # 브레드크럼스 함수
 
 
+# import sqlite3
+# from models import conn, cursor
+
+# def get_breadcrumbs(page_id):
+
+#     breadcrumbs = []
+#     while page_id is not None:
+#         cursor.execute('SELECT title, parent_id FROM pages WHERE id = ?', (page_id,))
+#         result = cursor.fetchone()
+#         if result:
+#             title, parent_id = result
+#             breadcrumbs.insert(0, title)  # 가장 최상위 페이지의 타이틀을 앞에 추가
+#             page_id = parent_id
+#         else:
+#             page_id = None
+
+#     conn.close()
+#     return '/'.join(breadcrumbs)
+
+# # 페이지 ID를 지정하여 브레드크럼스를 가져옵니다.
+# page_id = 4  # 예제로 페이지 ID를 4로 설정
+# breadcrumbs = get_breadcrumbs(page_id)
+# print(breadcrumbs)  # 예를 들어, "Home/Category/Subcategory/Product"와 같은 출력이 될 것입니다.

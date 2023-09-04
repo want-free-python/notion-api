@@ -1,6 +1,6 @@
 # Notion Page API 구현
 
-[실행 순서](#실행-순서) | [ERD](#ERD) | [구현내용](#구현-내용) | [팀 일정 이력](#팀-일정-이력) | [회고](#회고)
+[실행 순서](#실행-순서) | [요청/응답 구조](#요청/응답-구조) | [ERD](#ERD) | [구현내용](#구현-내용) | [팀 일정 이력](#팀-일정-이력) | [회고](#회고)
 
 ## 실행 순서
 
@@ -50,6 +50,32 @@ python3 main.py
  'title': 'page 6'}
 페이지 ID: 33
 Error 404
+```
+
+<br/>
+
+## 요청/응답 구조
+
+- 요청: page_id - integer
+- 응답 타입
+```
+{
+  'breadcrumbs': [{'id': integer, 'title': string}],
+  'content': string,
+  'id': integer,
+  'sub_pages': [{'id': integer, 'title': string}],
+  'title': string
+}
+```
+- 응답 예시
+```
+{
+  'breadcrumbs': [{'id': 7, 'title': 'page 7'}],
+  'content': 'content',
+  'id': 7,
+  'sub_pages': [{'id': 1, 'title': 'page 1'}],
+  'title': 'page 7'
+}
 ```
 
 <br/>

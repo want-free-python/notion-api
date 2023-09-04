@@ -54,13 +54,11 @@ def execute_sql_query(
 
     try:
         cursor.execute(sql_query)
-        connection.commit()
 
         if fetchall:
             result = cursor.fetchall()
         else:
             result = cursor.fetchone()
-
         return result
 
     except mysql.connector.Error as e:

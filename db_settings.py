@@ -1,37 +1,52 @@
+from os import getenv
+from typing import Tuple, Union, Optional, List
+
 import mysql.connector
 from dotenv import load_dotenv
-import os 
 
-load_dotenv()
-
-env = os.environ.get('env')
+load_dotenv(verbose=True)
 
 DB_CONFIG = {
-    "host": env('DB_HOST'),
-    "user": env('DB_USER'),
-    "password": env('DB_PASSWORD'),
-    "database": env('DB_NAME'),
+    "host": getenv('DB_HOST'),
+    "user": getenv('DB_USER'),
+    "password": getenv('DB_PASSWORD'),
+    "database": getenv('DB_NAME'),
 }
 
-def connect_to_mysql():
+def connect_to_mysql() -> Tuple[
+    Optional[
+        mysql.connector.connection.MySQLConnection
+    ], 
+    Optional[
+        mysql.connector.cursor.MySQLCursor]
+    ]:
     try:
         connection = mysql.connector.connect(**DB_CONFIG)
 
         if connection.is_connected():
             cursor = connection.cursor()
-
-        return connection, cursor
+            return connection, cursor
 
     except mysql.connector.Error as e:
         print(f"MySQL 오류 발생: {e}")
-        return None, None
+    
+    return None, None
 
-def close_mysql_connection(connection, cursor):
+def close_mysql_connection(
+    connection: Optional[
+        mysql.connector.connection.MySQLConnection
+    ], 
+    cursor: Optional[
+        mysql.connector.cursor.MySQLCursor
+    ]) -> None:
     if connection:
         connection.close()
 
 
-def execute_sql_query(sql_query, fetchall=False):
+def execute_sql_query(
+    sql_query: str, 
+    fetchall: bool = False
+    ) -> Union[None, List[Tuple]]:
     connection, cursor = connect_to_mysql()
 
     if not connection:
